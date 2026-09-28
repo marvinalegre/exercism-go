@@ -1,0 +1,10 @@
+{
+  "blurb": "The standard library \"strings\" package includes utility functions to work with strings.",
+  "authors": [
+    "tehsphinx",
+    "erikschierboom"
+  ],
+  "contributors": [
+    "BNAndras"
+  ]
+}

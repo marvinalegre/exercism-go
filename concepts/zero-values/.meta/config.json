@@ -1,0 +1,10 @@
+{
+  "blurb": "Variables declared without an assignment use the zero value of their type.",
+  "authors": [
+    "ErikSchierboom",
+    "sudomateo"
+  ],
+  "contributors": [
+    "BNAndras"
+  ]
+}

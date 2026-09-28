@@ -1,0 +1,26 @@
+{
+  "authors": [
+    "leenipper"
+  ],
+  "contributors": [
+    "bitfield",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "sebito91",
+    "eklatzer"
+  ],
+  "files": {
+    "solution": [
+      "alphametics.go"
+    ],
+    "test": [
+      "alphametics_test.go",
+      "cases_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
+  },
+  "blurb": "Given an alphametics puzzle, find the correct solution."
+}

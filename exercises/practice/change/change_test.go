@@ -1,0 +1,33 @@
+package change
+
+import (
+	"slices"
+	"testing"
+)
+
+func TestChange(t *testing.T) {
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			actual, err := Change(tc.coins, tc.target)
+			if tc.valid {
+				if err != nil {
+					t.Fatalf("Change(%v, %d): want: %v, got error: %v", tc.coins, tc.target, tc.expectedChange, err)
+				} else if !slices.Equal(actual, tc.expectedChange) {
+					t.Fatalf("Change(%v, %d): want: %#v, got: %#v", tc.coins, tc.target, tc.expectedChange, actual)
+				}
+			} else {
+				if err == nil {
+					t.Fatalf("Change(%v, %d): expected error, got %v", tc.coins, tc.target, actual)
+				}
+			}
+		})
+	}
+}
+
+func BenchmarkChange(b *testing.B) {
+	for b.Loop() {
+		for _, tc := range testCases {
+			Change(tc.coins, tc.target)
+		}
+	}
+}

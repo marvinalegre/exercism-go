@@ -1,0 +1,34 @@
+{
+  "authors": [
+    "robphoenix"
+  ],
+  "contributors": [
+    "alebaffa",
+    "bitfield",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "ilmanzo",
+    "leenipper",
+    "sebito91",
+    "strangeman",
+    "tapank",
+    "tleen",
+    "eklatzer"
+  ],
+  "files": {
+    "solution": [
+      "transpose.go"
+    ],
+    "test": [
+      "transpose_test.go",
+      "cases_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
+  },
+  "blurb": "Take input text and output it transposed.",
+  "source": "Reddit r/dailyprogrammer challenge #270 [Easy].",
+  "source_url": "https://web.archive.org/web/20230630051421/https://old.reddit.com/r/dailyprogrammer/comments/4msu2x/challenge_270_easy_transpose_the_input_text/"
+}

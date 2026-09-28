@@ -1,0 +1,149 @@
+# About
+
+In Go, `for range` repeats a block of code for values from a range expression.
+The range expression determines whether each iteration will yield one value or two.
+
+## Range Expressions
+
+### Range over a Slice
+
+`range` over a slice yields the index and value of each element in order:
+
+```go
+vals := []int{10, 20, 30}
+for i, v := range vals {
+    fmt.Println(i, v)
+}
+// 0 10
+// 1 20
+// 2 30
+```
+
+### Range over a Map
+
+`range` over a map yields each key and value, but the iteration order is not guaranteed.
+Go deliberately randomizes map iteration order, so the same program may produce different output on each run.
+
+```go
+hash := map[int]int{9: 10, 99: 20, 999: 30}
+for k, v := range hash {
+    fmt.Println(k, v)
+}
+// 99 20
+// 999 30
+// 9 10
+```
+
+### Range over a String
+
+`range` over a string yields the byte index and each rune (Unicode code point).
+In the following example, `子` occupies three bytes so `猫` begins at byte index `3`, not `1`.
+
+```go
+for i, r := range "子猫" {
+    fmt.Println(i, r, string(r))
+}
+// 0 23376 子
+// 3 29483 猫
+```
+
+If you need rune indices instead, convert the string to a slice of runes:
+
+```go
+for i, r := range []rune("子猫") {
+    fmt.Println(i, r, string(r))
+}
+// 0 23376 子
+// 1 29483 猫
+```
+
+### Range over an Integer
+
+`range` can iterate over an integer directly, yielding values from `0` up to but not including that integer.
+Zero and negative values are valid but produce no iterations.
+
+```go
+for n := range 3 {
+    fmt.Println(n)
+}
+// 0
+// 1
+// 2
+```
+
+### Range over an Iterator
+
+`range` accepts an iterator of type `iter.Seq[V]` or `iter.Seq2[K, V]`.
+An iterator is a function that produces a sequence of values one at a time.
+`range` can then step through those values.
+
+```go
+text := "The quick brown fox"
+for word := range strings.FieldsSeq(text) {
+    fmt.Println(word)
+}
+// The
+// quick
+// brown
+// fox
+
+names := []string{"Alice", "Bob", "Vera"}
+for i, v := range slices.All(names) {
+    fmt.Println(i, ":", v)
+}
+// 0 : Alice
+// 1 : Bob
+// 2 : Vera
+```
+
+### Range over a Channel
+
+Finally, `range` can receive values sent through a channel until that channel is closed elsewhere.
+Channels are covered in more depth later in the track syllabus.
+
+## Omitting Index or Value
+
+Go will not compile if a variable is declared but never used.
+
+```go
+vals := []int{10, 20, 30}
+for i, v := range vals {
+    fmt.Println(v)
+}
+// Go build failed: declared and not used: i
+```
+
+If only the value is needed, assign the index or key to `_` to ignore it.
+
+```go
+vals := []int{10, 20, 30}
+for _, v := range vals {
+    fmt.Println(v)
+}
+// 10
+// 20
+// 30
+```
+
+If only the index is needed, omit it completely:
+
+```go
+vals := []int{10, 20, 30}
+for i := range vals {
+    fmt.Println(i)
+}
+// 0
+// 1
+// 2
+```
+
+If neither the index nor the value is needed, both can be omitted:
+
+```go
+vals := []int{10, 20, 30}
+count := 0
+for range vals {
+    count++
+}
+// count == 3
+```

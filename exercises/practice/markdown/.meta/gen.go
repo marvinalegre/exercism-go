@@ -1,0 +1,46 @@
+package main
+
+import (
+	"../../../../gen"
+	"log"
+	"text/template"
+)
+
+func main() {
+	t, err := template.New("").Parse(tmpl)
+	if err != nil {
+		log.Fatal(err)
+	}
+	j := map[string]any{
+		"parse": &[]testCase{},
+	}
+	if err := gen.Gen("markdown", j, t); err != nil {
+		log.Fatal(err)
+	}
+}
+
+type testCase struct {
+	Description string `json:"description"`
+	Input       struct {
+		Markdown string `json:"markdown"`
+	} `json:"input"`
+	Expected string `json:"expected"`
+}
+
+// Template to generate test cases.
+var tmpl = `{{.Header}}
+
+type testCase struct {
+	description	  string
+	input		  string
+	expected	  string
+}
+
+var testCases = []testCase { {{range .J.parse}}
+	{
+		description:	{{printf "%q"  .Description}},
+		input:		{{printf "%q"  .Input.Markdown}},
+		expected:	{{printf "%q"  .Expected}},
+	},{{end}}
+}
+`

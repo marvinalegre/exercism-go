@@ -1,0 +1,14 @@
+*.swp
+.DS_Store
+.editorconfig
+tmp
+bin/configlet
+bin/configlet.exe
+bin/golangci-lint
+bin/golangci-lint.exe
+
+# gotools
+
+gotools/gotools
+gotools/gotools.exe
+gotools/vendor

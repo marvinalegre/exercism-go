@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://go.dev/ref/spec#Variable_declarations",
+    "description": "Variable declarations"
+  },
+  {
+    "url": "https://go.dev/ref/spec#Short_variable_declarations",
+    "description": "Short variable declarations"
+  },
+  {
+    "url": "https://go.dev/ref/spec#Assignments",
+    "description": "Assignments"
+  }
+]

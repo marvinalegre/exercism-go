@@ -1,0 +1,30 @@
+{
+  "authors": [
+    "leenipper"
+  ],
+  "contributors": [
+    "alebaffa",
+    "bitfield",
+    "da-edra",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "ilmanzo",
+    "robphoenix",
+    "sebito91",
+    "eklatzer"
+  ],
+  "files": {
+    "solution": [
+      "forth.go"
+    ],
+    "test": [
+      "forth_test.go",
+      "cases_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
+  },
+  "blurb": "Implement an evaluator for a very simple subset of Forth."
+}
